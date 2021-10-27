@@ -1,0 +1,23 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+form {
+    max-width: 480px;
+    margin: 2rem auto;
+}
+
+input {
+    border-style: solid;
+    border-radius: 4px;
+    padding: .5rem;
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+.error {
+    border: 2px solid red;
+    color: red;
+}
