@@ -25,11 +25,12 @@ const aplicarMascara = (event, regex, mascara) => {
 }
 
 const limitarEntrada = (event, limite) => {
-    let value = event.target.value.replace(/\D/g, "");
+    let valor = event.target.value.replace(/\D/g, "");
 
-    value = value.toString();
-    if (value.length >= limite)
+    valor = valor.toString();
+    if (valor.length >= limite) {
         event.preventDefault();
+    }
 }
 
 // FIX: o usuario ainda pode colocar apenas o acento ex: ~daniel
@@ -72,6 +73,8 @@ inputSubmit.addEventListener("click", (event) => {
     validarCampos();
     validarNome();
     validarCpf();
+    validarCep();
+    validarNascimento();
 });
 
 function error(mensagem, elemento) {
@@ -149,3 +152,39 @@ function validarCpf() {
     limpar(inputCpf)
 }
 
+function validarCep() {
+    let valor = inputCep.value.replace(/\D/g, "");
+    valor = value.toString();
+
+    if (valor.length != 8) {
+        error("cep invalido", inputCep);
+        return;
+    }
+
+    limpar(inputCep);
+}
+
+// FIX: codigo repetido em validarCep e validarNascimento
+function validarCep() {
+    let valor = inputCep.value.replace(/\D/g, "");
+    valor = valor.toString();
+
+    if (valor.length != 8) {
+        error("invalido", inputCep);
+        return;
+    }
+
+    limpar(inputCep);
+}
+
+function validarNascimento() {
+    let valor = inputNascimento.value.replace(/\D/g, "");
+    valor = valor.toString();
+
+    if (valor.length != 8) {
+        error("invalido", inputNascimento);
+        return;
+    }
+
+    limpar(inputNascimento);
+}
